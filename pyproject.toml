@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "language-project"
+version = "0.1.0"
+description = ""
+authors = ["terror53421 <urarubanenko@gmail.com>"]
+readme = "README.md"
+packages = [{include = "language_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+python-decouple = "^3.8"
+django = "^4.2.3"
+django-environ = "^0.10.0"
+isort = "^5.12.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
