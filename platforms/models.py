@@ -5,8 +5,8 @@ from django.db import models
 
 class Language(models.Model):
     LANGUAGE_CHOICES = [
-        ('UKR', 'Ukrainian'),
-        ('ENG', 'English'),
+        ('UA', 'Ukrainian'),
+        ('EN', 'English'),
     ]
 
     name = models.CharField(max_length=3, choices=LANGUAGE_CHOICES)
