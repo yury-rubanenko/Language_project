@@ -4,17 +4,22 @@ from django.db import models
 
 
 class Language(models.Model):
-    name = models.CharField(max_length=2, choices=...)
+    LANGUAGE_CHOICES = [
+        ('UKR', 'Ukrainian'),
+        ('ENG', 'English'),
+    ]
+
+    name = models.CharField(max_length=3, choices=LANGUAGE_CHOICES)
 
     def __str__(self):
-        return self.name
+        return self.get_name_display()
 
 
 class Word(models.Model):
     word = models.CharField(max_length=128)
-    picture = models.ImageField(max_length=...)
+    picture = models.ImageField(upload_to='images/', max_length=255)
     translation = models.CharField(max_length=128)
-    transcription = models.CharField(max_length=128)
+    transcription = models.CharField(max_length=128, blank=True)
     language = models.ForeignKey(Language, on_delete=models.CASCADE) 
 
     def __str__(self):
