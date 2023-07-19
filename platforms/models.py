@@ -1,5 +1,5 @@
 from django.db import models
-
+from profiles.models import User
 # Create your models here.
 
 
@@ -24,3 +24,11 @@ class Word(models.Model):
 
     def __str__(self):
         return self.word
+
+class UsersWords(models.Model):
+    user_word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name='users_words')
+    user_name = models.ForeignKey(User, on_delete=models.CASCADE, related_name='users_words')
+    time = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.user_name.username} - {self.user_word.word}"
