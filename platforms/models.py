@@ -25,10 +25,9 @@ class Word(models.Model):
     def __str__(self):
         return self.word
 
-class UsersWords(models.Model):
-    user_word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name='users_words')
-    user_name = models.ForeignKey(User, on_delete=models.CASCADE, related_name='users_words')
-    time = models.DateTimeField(auto_now_add=True)
+class UserWord(models.Model):
+    word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name='users_words')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='users_words')
+    date_add_word = models.DateTimeField()
     
-    def __str__(self):
-        return f"{self.user_name.username} - {self.user_word.word}"
+    
