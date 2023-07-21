@@ -22,7 +22,6 @@ class Word(models.Model):
     transcription = models.CharField(max_length=128, blank=True)
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
 
-    users = models.ManyToManyField(User, through='UserWord', related_name='words')
 
     def __str__(self):
         return self.word
