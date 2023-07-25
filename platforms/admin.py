@@ -3,7 +3,7 @@ from .models import Word, UserWord
 # Register your models here.
 
 class LearnedFilter(admin.SimpleListFilter):
-    title = 'Learned Staus'
+    title = 'Learned Status'
     parameter_name = 'is_learned'
 
     def lookups(self, request, model_admin):
