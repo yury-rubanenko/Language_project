@@ -29,5 +29,5 @@ class Word(models.Model):
 class UserWord(models.Model):
     word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name='users_words')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='users_words')
-    learned_at = models.DateField()
-    
+    learned_at = models.BooleanField(default=False)
+    # тут я змінив на бульовий тип
