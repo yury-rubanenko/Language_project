@@ -2,16 +2,28 @@ from django.contrib import admin
 from .models import Word, UserWord
 # Register your models here.
 
-class UserWordAdmin(admin.ModelAdmin):
-    list_display = ('word', 'user', 'is_learned')
-    list_filter = ('learned_at',)
+class LearnedFilter(admin.SimpleListFilter):
+    title = 'Learned Staus'
+    parameter_name = 'is_learned'
 
-    def is_learned(self, obj):
-        return obj.learned_at is not None
+    def lookups(self, request, model_admin):
+        return(
+        ('learned', 'Learned'),
+        ('not_learned', 'Not Learned'),
+        )
     
-    is_learned.boolean = True
-    is_learned.short_description = 'learned'
+    def queryset(self, request, queryset):
+        if self.value() == 'learned':
+            return queryset.filter(learned_at__isnull=False)
+        if self.value() == 'not_learned':
+            return queryset.filter(learned_at__isnull=True)
+
+class UserWordAdmin(admin.ModelAdmin):
+    list_display = ('word', 'user')
+    list_filter = (LearnedFilter,)
+
 
 
 admin.site.register(Word)
 admin.site.register(UserWord, UserWordAdmin)
+
