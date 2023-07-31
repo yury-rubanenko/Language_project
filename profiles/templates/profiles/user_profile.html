@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}!</h1>
+    <p>Email: {{ user.email }}</p>
+    <h2>Your Words:</h2>
+    <ul>
+        {% for word in words %}
+            <li>{{ word.word }} - {{ word.translation }}</li>
+        {% empty %}
+            <li>No words yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
