@@ -1,12 +1,12 @@
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from .models import User
+from .serializers import UserSerializer
 
-# Create your views here.
-
-@login_required
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])  # Дозвіл для авторизованих користувачів
 def user_profile(request):
     user = request.user
-    words = user.words.all()  # Отримати всі слова, пов'язані з користувачем
-
-    # Передати дані профілю користувача у шаблон
-    return render(request, 'profiles/user_profile.html', {'user': user, 'words': words})
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
