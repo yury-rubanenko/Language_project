@@ -5,9 +5,9 @@ from .models import UserWord, Word
 class UserWordSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserWord
-        fields = ('__all__')
+        fields = ('word', 'user', 'learned_at')
 
 class WordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Word
-        fields = ('__all__')
+        fields = ('word', 'picture', 'translation', 'transcription', 'language')

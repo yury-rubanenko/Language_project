@@ -9,5 +9,5 @@ router.register(r'words', views.WordListView, basename='word')
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('my-words/', views.UserWordsListView.as_view({'get': 'list'}), name='user_words_list'),
 ]
-
