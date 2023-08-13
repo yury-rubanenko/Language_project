@@ -3,7 +3,7 @@ from django.forms.widgets import DateInput
 from .models import UserWord
 
 
-class ReplacementFilter(django_filters.FilterSet):
+class UserWordFilter(django_filters.FilterSet):
     learned_at = django_filters.DateFilter(
         field_name='learned_at',
         lookup_expr='gte',
