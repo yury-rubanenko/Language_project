@@ -1,11 +1,7 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 from . import views
 
 
-router = DefaultRouter()
-router.register(r'user_profile', views.UserProfileViewSet, basename='user-profile')
-
 urlpatterns = [
-    path('', include(router.urls)),
+    path(r'user_profile/', views.UserProfileViewSet.as_view({'get': 'list'}), name='user-profile'),
 ]

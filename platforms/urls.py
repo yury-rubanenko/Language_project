@@ -1,13 +1,10 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 from . import views 
-
-
-router = DefaultRouter()
-router.register('my-words', views.UserWordsListView, basename='user-words') 
-router.register(r'words', views.WordListView, basename='word')
+from django.utils.decorators import method_decorator
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('my-words/', views.UserWordsListView.as_view({'get': 'list'}), name='user_words_list'),
+    path(r'<str:language_slag>/words/', views.WordListView.as_view(), name='words-list'),
+    path(r'<str:language_slag>/my-words/', views.UserWordsListView.as_view(), name='user-words-list'),
+    path(r'<str:language_slag>/my-words/<int:pk>/update/', views.UpdateUserWordsAPIView.as_view(), name='user-words-update'),
+    path(r'<str:language_slag>/my-words/<int:pk>/delete/', views.DeleteUserWordsAPIView.as_view(), name='user-words-delete'),
 ]

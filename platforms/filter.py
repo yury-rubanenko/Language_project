@@ -1,4 +1,6 @@
+from django import forms
 import django_filters
+from django_filters import rest_framework as filters
 from django.forms.widgets import DateInput
 from .models import UserWord
 
@@ -19,7 +21,6 @@ class UserWordFilter(django_filters.FilterSet):
         lookup_expr='isnull',
         exclude=True
     )
-
     class Meta:
         model = UserWord
         fields = []
