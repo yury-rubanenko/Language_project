@@ -31,4 +31,4 @@ class UpdateUserWordSerializer(serializers.ModelSerializer):
 class DeleteUserWordSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserWord
-        fields = ('__all__')
+        fields = ('word', 'user', 'learned_at')
