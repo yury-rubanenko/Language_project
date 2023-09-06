@@ -9,7 +9,7 @@ class Word(models.Model):
         UKRAINIAN = "ua"
 
     word = models.CharField(max_length=128)
-    picture = models.ImageField(upload_to='images/', max_length=255)
+    picture = models.ImageField(upload_to='images/', max_length=255, blank=True)
     translation = models.CharField(max_length=128)
     transcription = models.CharField(max_length=128, blank=True)
     language = models.CharField(max_length=2, choices=LanguageChoices.choices)
