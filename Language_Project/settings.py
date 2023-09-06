@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'django_filters',
     'django_extensions',
     'drf_yasg',
-    'word_importer',
 ]
 
 MIDDLEWARE = [
