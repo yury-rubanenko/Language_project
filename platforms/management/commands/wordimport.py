@@ -2,11 +2,6 @@ from django.core.management.base import BaseCommand
 from platforms.models import Word
 import csv
 
-
-from django.core.management.base import BaseCommand
-from platforms.models import Word
-import csv
-
 class Command(BaseCommand):
     help = "Import new words from CSV files"
 
@@ -24,11 +19,14 @@ class Command(BaseCommand):
                 translation = row['translation']
                 language = row['language']
 
-                Word.objects.create(
+                word_obj, created = Word.objects.get_or_create(
                     word=word,
                     translation=translation,
                     language=language
                 )
 
-                self.stdout.write(self.style.SUCCESS(f'Successfully added word: {word}'))
-                
+                if created:
+                    self.stdout.write(self.style.SUCCESS(f'Successfully added word: {word}'))
+                else:
+                    self.stdout.write(self.style.SUCCESS(f'Word already exists: {word}'))
+                    
