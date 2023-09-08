@@ -29,4 +29,3 @@ class Command(BaseCommand):
                     self.stdout.write(self.style.SUCCESS(f'Successfully added word: {word}'))
                 else:
                     self.stdout.write(self.style.SUCCESS(f'Word already exists: {word}'))
-                    
