@@ -3,6 +3,13 @@ from profiles.models import User
 # Create your models here.
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+    
+
 class Word(models.Model):
     class LanguageChoices(models.TextChoices):
         ENGLISH = 'en'
@@ -13,6 +20,7 @@ class Word(models.Model):
     translation = models.CharField(max_length=128)
     transcription = models.CharField(max_length=128, blank=True)
     language = models.CharField(max_length=2, choices=LanguageChoices.choices)
+    tags = models.ManyToManyField(Tag, blank=True)
 
 
     def __str__(self):

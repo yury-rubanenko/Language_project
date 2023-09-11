@@ -1,4 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
+from django.db.models import Count
 from .models import UserWord, Word
 from .serializers import UserWordSerializer, WordSerializer, CreateUserWordSerializer, UpdateUserWordSerializer, DeleteUserWordSerializer
 from rest_framework import permissions
@@ -6,11 +7,28 @@ from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
 from .filter import UserWordFilter
 from rest_framework.generics import ListCreateAPIView, ListAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+
+class TagStatisticsView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request):
+        tag_counts = Word.objects.values('language').annotate(total_tags=Count('tags'))
+
+        total_tags = Word.objects.aggregate(total=Count('tags'))['total']
+
+        data = {
+            'tag_counts_per_language': tag_counts,
+            'total_tags': total_tags
+        }
+        return Response(data)
 
 
 class WordPagination(PageNumberPagination):
     page_size = 15
-# GET /api/en/words/?page=?
+
 # list all words(GET)
 class WordListView(ListAPIView):
     serializer_class = WordSerializer
