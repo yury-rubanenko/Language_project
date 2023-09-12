@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Word, UserWord
+from django.contrib.admin.widgets import FilteredSelectMultiple
+from .models import Word, UserWord, Tag
 # Register your models here.
 
 class LearnedFilter(admin.SimpleListFilter):
@@ -22,8 +23,10 @@ class UserWordAdmin(admin.ModelAdmin):
     list_display = ('word', 'user')
     list_filter = (LearnedFilter,)
 
-
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
 
 admin.site.register(Word)
 admin.site.register(UserWord, UserWordAdmin)
-
+admin.site.register(Tag, TagAdmin)

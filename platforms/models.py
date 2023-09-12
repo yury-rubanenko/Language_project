@@ -20,7 +20,7 @@ class Word(models.Model):
     translation = models.CharField(max_length=128)
     transcription = models.CharField(max_length=128, blank=True)
     language = models.CharField(max_length=2, choices=LanguageChoices.choices)
-    tags = models.ManyToManyField(Tag, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True, related_name='words')
 
 
     def __str__(self):
