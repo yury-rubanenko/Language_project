@@ -1,3 +1,5 @@
+MODULE = Language_Project/
+
 sort-imports:
 	isort $(MODULE)
 
