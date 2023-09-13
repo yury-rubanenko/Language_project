@@ -1,7 +1,8 @@
-from django import forms
 import django_filters
-from django_filters import rest_framework as filters
+from django import forms
 from django.forms.widgets import DateInput
+from django_filters import rest_framework as filters
+
 from .models import UserWord
 
 
