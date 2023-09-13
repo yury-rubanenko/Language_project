@@ -17,6 +17,9 @@ pillow = "^10.0.0"
 djangorestframework = "^3.14.0"
 django-filter = "^23.2"
 drf-yasg = "^1.21.7"
+flake8 = "^6.1.0"
+mypy-extensions = "^1.0.0"
+black = "^23.9.1"
 
 
 [tool.poetry.group.dev.dependencies]
