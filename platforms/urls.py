@@ -1,5 +1,6 @@
 from django.urls import path
-from . import views 
+
+from . import views
 
 urlpatterns = [
     path(r'<str:language_slag>/words/', views.WordListView.as_view(), name='words-list'),

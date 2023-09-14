@@ -1,7 +1,7 @@
-MODULE = Language_Project/
+MODULE = ~/Language/Language_Project
 
 sort-imports:
-	isort $(MODULE)
+	isort $(MODULE) 
 
 flake-lint:
 	flake8 $(MODULE)

@@ -48,8 +48,3 @@ exclude = '''
    | migrations
 )/
 '''
-
-[tool.isort]
-profile = "black"
-line_length = 100
-known_third_party = ["django"]

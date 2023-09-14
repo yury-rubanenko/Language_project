@@ -1,6 +1,9 @@
-from django.core.management.base import BaseCommand
-from platforms.models import Word
 import csv
+
+from django.core.management.base import BaseCommand
+
+from platforms.models import Word
+
 
 class Command(BaseCommand):
     help = "Import new words from CSV files"

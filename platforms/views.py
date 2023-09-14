@@ -1,14 +1,18 @@
+from django.db.models import Avg, Count
 from django_filters.rest_framework import DjangoFilterBackend
-from django.db.models import Count, Avg
-from .models import UserWord, Word
-from .serializers import UserWordSerializer, WordSerializer, CreateUserWordSerializer, UpdateUserWordSerializer, DeleteUserWordSerializer
 from rest_framework import permissions
 from rest_framework.exceptions import NotFound
+from rest_framework.generics import (DestroyAPIView, ListAPIView,
+                                     ListCreateAPIView, UpdateAPIView)
 from rest_framework.pagination import PageNumberPagination
-from .filter import UserWordFilter
-from rest_framework.generics import ListCreateAPIView, ListAPIView, UpdateAPIView, DestroyAPIView
-from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .filter import UserWordFilter
+from .models import UserWord, Word
+from .serializers import (CreateUserWordSerializer, DeleteUserWordSerializer,
+                          UpdateUserWordSerializer, UserWordSerializer,
+                          WordSerializer)
 
 
 class TagStatisticsView(APIView):

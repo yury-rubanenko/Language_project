@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.contrib.admin.widgets import FilteredSelectMultiple
-from .models import Word, UserWord, Tag
+
+from .models import Tag, UserWord, Word
+
 # Register your models here.
 
 class LearnedFilter(admin.SimpleListFilter):
