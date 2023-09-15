@@ -2,12 +2,7 @@ from django.db.models import Avg, Count
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import permissions
 from rest_framework.exceptions import NotFound
-from rest_framework.generics import (
-    DestroyAPIView,
-    ListAPIView,
-    ListCreateAPIView,
-    UpdateAPIView,
-)
+from rest_framework.generics import DestroyAPIView, ListAPIView, ListCreateAPIView, UpdateAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
