@@ -34,7 +34,6 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 100
-include = '\.pyi?$'
 exclude = '''
 /(
     \.git
@@ -49,3 +48,9 @@ exclude = '''
    | migrations
 )/
 '''
+
+[tool.isort]
+line_length = 100
+profile = "black"
+known_third_party = ["django", "rest_framework"]
+skip = ["migrations"]
