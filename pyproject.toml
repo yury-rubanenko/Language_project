@@ -20,6 +20,7 @@ drf-yasg = "^1.21.7"
 flake8 = "^6.1.0"
 mypy-extensions = "^1.0.0"
 black = "^23.9.1"
+gedit = "^0.0.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -33,7 +34,6 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 100
-include = '\.pyi?$'
 exclude = '''
 /(
     \.git
@@ -48,3 +48,9 @@ exclude = '''
    | migrations
 )/
 '''
+
+[tool.isort]
+line_length = 100
+profile = "black"
+known_third_party = ["django", "rest_framework"]
+skip = ["migrations"]

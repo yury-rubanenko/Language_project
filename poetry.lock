@@ -267,6 +267,17 @@ pycodestyle = ">=2.11.0,<2.12.0"
 pyflakes = ">=3.1.0,<3.2.0"
 
 [[package]]
+name = "gedit"
+version = "0.0.2"
+description = "Tools for geographical data processing"
+optional = false
+python-versions = "*"
+files = [
+    {file = "gedit-0.0.2-py3-none-any.whl", hash = "sha256:cbd5d37438d3dc1274195937201016b2b079f8bdf32b43df9d17d0bec6d91134"},
+    {file = "gedit-0.0.2.tar.gz", hash = "sha256:1bfc39e172593761b55feae15dfc5b5cb2a8d316106ea6b7cd1358935b5bbb17"},
+]
+
+[[package]]
 name = "inflection"
 version = "0.5.1"
 description = "A port of Ruby on Rails inflector to Python"
@@ -811,4 +822,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "bc94b4c0691a1673b41366cfd2204e3e71a14a5b5a03f64d80958a5212d41012"
+content-hash = "0c0abd26bda0b18cd7550d5030cbb18bc5d5170d7c68524d95b7daa34fe23fe3"
