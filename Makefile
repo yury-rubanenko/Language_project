@@ -7,6 +7,6 @@ black-sort:
 	black $(MODULE)
 
 flake-lint:
-	flake8 $(MODULE)
+	flake8 $(MODULE) --format=pylint
 
-sort: sort-imports black-sort flake-lint
+fixlint: sort-imports black-sort flake-lint
