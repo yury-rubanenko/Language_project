@@ -1,4 +1,3 @@
-from allauth.account.views import LoginView, LogoutView, PasswordChangeView, SignupView
 from django.contrib import admin
 from django.urls import include, path, re_path
 
