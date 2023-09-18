@@ -36,8 +36,9 @@ INSTALLED_APPS = [
     "django_filters",
     "django_extensions",
     "drf_yasg",
-    "allauth",
-    "allauth.account",
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -126,22 +127,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # MEDIA
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
-# DJANGO-ALLAUTH
 
-AUTHENTICATION_BACKENDS = ("allauth.account.auth_backends.AuthenticationBackend",)
-
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-
-ACCOUNT_FORMS = {
-    "signup": "myapp.forms.MySignupForm",
-    "login": "myapp.forms.MyLoginForm",
-    "reset_password": "myapp.forms.MyResetPasswordForm",
-    "change_password": "myapp.forms.MyChangePasswordForm",
-}
-# EMAIL_SMTP
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'your-smtp-host'  # Замініть на ваш SMTP-сервер
-# EMAIL_PORT = 587  # Порт для SMTP
-# EMAIL_USE_TLS = True  # Використовуйте TLS
-# EMAIL_HOST_USER = 'your-email@example.com'  # Ваша електронна пошта
-# EMAIL_HOST_PASSWORD = 'your-email-password'  # Пароль для електронної пошти
+AUTHENTICATION_BACKENDS = [
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
