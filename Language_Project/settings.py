@@ -36,9 +36,9 @@ INSTALLED_APPS = [
     "django_filters",
     "django_extensions",
     "drf_yasg",
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
 ]
 
 MIDDLEWARE = [
@@ -129,5 +129,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
 AUTHENTICATION_BACKENDS = [
-    'allauth.account.auth_backends.AuthenticationBackend',
+    "allauth.account.auth_backends.AuthenticationBackend",
 ]

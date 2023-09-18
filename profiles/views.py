@@ -12,4 +12,3 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         return User.objects.filter(pk=user.pk)
-
