@@ -56,6 +56,7 @@ class WordListView(ListAPIView):
         queryset = Word.objects.all()
         return queryset
 
+
 # user words list (POST-GET)
 class UserWordsListView(ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
