@@ -1,3 +1,5 @@
+from allauth.account.views import SignupView
+from forms import CustomSignupForm
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
@@ -12,3 +14,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         return User.objects.filter(pk=user.pk)
+
+
+class CustomSignupView(SignupView):
+    form_class = CustomSignupForm
