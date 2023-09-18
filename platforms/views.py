@@ -7,7 +7,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .filter import UserWordFilter
+from .filter import UserWordFilter, WordFilter
 from .models import UserWord, Word
 from .serializers import (
     CreateUserWordSerializer,
@@ -45,13 +45,16 @@ class WordListView(ListAPIView):
     serializer_class = WordSerializer
     permission_classes = [permissions.AllowAny]
     pagination_class = WordPagination
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = WordFilter
 
     def get_queryset(self):
         language = self.kwargs["language_slag"]
         if language not in Word.LanguageChoices:
             raise NotFound()
 
-        return Word.objects.all()
+        queryset = Word.objects.all()
+        return queryset
 
 
 # user words list (POST-GET)

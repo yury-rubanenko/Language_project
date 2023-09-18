@@ -1,7 +1,7 @@
 import django_filters
 from django.forms.widgets import DateInput
 
-from .models import UserWord
+from .models import UserWord, Word
 
 
 class UserWordFilter(django_filters.FilterSet):
@@ -18,3 +18,15 @@ class UserWordFilter(django_filters.FilterSet):
     class Meta:
         model = UserWord
         fields = []
+
+
+class WordFilter(django_filters.FilterSet):
+    tags = django_filters.CharFilter(method="filter_tags")
+
+    class Meta:
+        model = Word
+        fields = []
+
+    def filter_tags(self, queryset, name, value):
+        tags = value.split(",")
+        return queryset.filter(tags__name__in=tags)
