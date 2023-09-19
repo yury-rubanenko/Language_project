@@ -1,11 +1,7 @@
+from allauth.account.views import LoginView, LogoutView, PasswordChangeView, SignupView
 from django.contrib import admin
 from django.urls import include, path, re_path
-from allauth.account.views import (
-    LoginView, 
-    LogoutView, 
-    SignupView,
-    PasswordChangeView,
-)
+
 from .swagger_settings import schema_view
 
 urlpatterns = [
