@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,26 @@ MEDIA_URL = "/media/"
 AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {
+            'access_type': 'offline',
+        },
+        'METHOD': 'oauth2',
+    },
+}
+
+SOCIALACCOUNT_GOOGLE_CLIENT_ID = env("SOCIALACCOUNT_GOOGLE_CLIENT_ID")
+SOCIALACCOUNT_GOOGLE_SECRET = env("SOCIALACCOUNT_GOOGLE_SECRET")
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+# Additional configuration settings
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET= True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
