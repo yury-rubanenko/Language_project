@@ -4,7 +4,6 @@ from django.dispatch import receiver
 from .models import Tag, Word
 
 
-# перевірка на тег присвоєння дефолтого тегу
 @receiver(post_save, sender=Word)
 def assign_default_tag(sender, instance, created, **kwargs):
     if created and not instance.tags.exists():
