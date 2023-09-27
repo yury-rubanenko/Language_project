@@ -20,6 +20,3 @@ def update_word_tags(sender, instance: Word, action: str, **kwargs):
 
     elif action == "post_add":
         instance.tags.through.filter(word_id=instance.id, tag__name="tag_not_set").delete()
-        # default_tag, created = Tag.objects.get_or_create(name="tag_not_set")
-        # if default_tag in instance.tags.all():
-        #     instance.tags.remove(default_tag)
