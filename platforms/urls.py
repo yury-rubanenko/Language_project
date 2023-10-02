@@ -18,4 +18,5 @@ urlpatterns = [
         name="user-words-delete",
     ),
     path(r"tag-statistics/", views.TagStatisticsView.as_view(), name="tag-statistics"),
+    path(r"http-request-statistics/", views.HttpStatisticsViews.as_view(), name="request-statistics"),
 ]
