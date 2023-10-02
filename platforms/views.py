@@ -8,10 +8,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .filter import UserWordFilter, WordFilter
-from .models import UserWord, Word
+from .models import HttpRequestLog, UserWord, Word
+from .permissions import IsAdminUser
 from .serializers import (
     CreateUserWordSerializer,
     DeleteUserWordSerializer,
+    HttpResponseSerializer,
     UpdateUserWordSerializer,
     UserWordSerializer,
     WordSerializer,
@@ -53,7 +55,7 @@ class WordListView(ListAPIView):
         if language not in Word.LanguageChoices:
             raise NotFound()
 
-        queryset = Word.objects.all()
+        queryset = Word.objects.all().order_by("id")
         return queryset
 
 
@@ -99,3 +101,13 @@ class DeleteUserWordsAPIView(DestroyAPIView):
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+
+
+class HttpStatisticsViews(ListAPIView):
+    permission_classes = [IsAdminUser]
+    serializer_class = HttpResponseSerializer
+    filter_backends = [DjangoFilterBackend]
+
+    def get_queryset(self):
+        queryset = HttpRequestLog.objects.all().order_by("id")[:10]
+        return queryset

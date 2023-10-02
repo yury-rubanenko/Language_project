@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import UserWord, Word
+from .models import HttpRequestLog, UserWord, Word
 
 
 class WordSerializer(serializers.ModelSerializer):
@@ -35,3 +35,9 @@ class DeleteUserWordSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserWord
         fields = ("word", "user", "learned_at")
+
+
+class HttpResponseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HttpRequestLog
+        fields = ("method", "path", "timestamp")

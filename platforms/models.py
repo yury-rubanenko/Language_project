@@ -32,3 +32,9 @@ class UserWord(models.Model):
     word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name="users_words")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="users_words")
     learned_at = models.DateField(null=True, blank=True)
+
+
+class HttpRequestLog(models.Model):
+    method = models.CharField(max_length=10)
+    path = models.CharField(max_length=255)
+    timestamp = models.DateTimeField(auto_now_add=True)
